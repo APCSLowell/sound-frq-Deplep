@@ -40,15 +40,16 @@ public class Sound
   {
     int index = 0;
     int newIndex = 0;
-    while(samples[index] == 0 && index < samples.length){
+    while(index < samples.length && samples[index] == 0){
       index += 1;
     }
     if(samples[index] > 0){
       int [] newArray = new int[samples.length - index];
       for(int i = index; i < samples.length; i++){
-        samples[i] = newArray[newIndex];
+        newArray[newIndex] = samples[i];
         newIndex += 1;
       }
+      samples = newArray;
     }
   }
 }
